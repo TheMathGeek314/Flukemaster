@@ -9,7 +9,7 @@ using HutongGames.PlayMaker.Actions;
 namespace Flukemaster {
     public class Flukemaster: Mod {
         new public string GetName() => "Flukemaster";
-        public override string GetVersion() => "1.0.0.0";
+        public override string GetVersion() => "1.0.0.1";
 
         public static spellChoice activeSpell;
 
@@ -41,6 +41,11 @@ namespace Flukemaster {
                     FsmState finalUpState = self.CopyState("Flukes", "Flukes Up");
                     FsmState finalDownWideState = self.CopyState("Flukes", "Flukes Down Wide");
                     FsmState finalDownTallState = self.CopyState("Flukes", "Flukes Down Tall");
+                    //istg if this works vvv
+                    foreach(FsmState toAdd in new FsmState[] { upState, downWState, downTState, flukeUState, flukeDWState, flukeDTState, finalUpState, finalDownWideState, finalDownTallState }) {
+                        self.AddState(toAdd);
+                    }
+                    //istg if this works ^^^
                     //connect transitions
                     lorr.AddTransition("UP", "Cast Up");
                     lorr.AddTransition("DOWN WIDE", "Cast Down Wide");
